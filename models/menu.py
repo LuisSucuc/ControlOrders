@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
 response.menu = [
-    (T('Home'),     'flaticon-map',         URL('default', 'index' ), []),
+    (T('Comprar'),     'flaticon-map',         URL('default', 'index' ), []),
     (T('Menu'), 	'flaticon-time',     None, 
         [
-            (T('Test'),       False,        URL( 'default', 'index' ), []),
-            (T('Controller'),   False,      URL( 'default', 'index' ), []),
+            (T('Clasificaciones'),       False,        URL( 'default', 'index' ), []),
+            (T('Products'),       False,        URL( 'products', 'products' ), []),
         ]
     ),
 ]

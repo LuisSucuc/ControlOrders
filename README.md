@@ -1,3 +1,2 @@
-# Metro 6
 
-Proyecto base de web2py para la generación de un nuevo proyecto para el template METRO y su opción o demo 6.
+Sistema sipmlsimple para control y compra de productos realizado en el Framework de Python web2py utilizando Docker por medio de docker-compose
