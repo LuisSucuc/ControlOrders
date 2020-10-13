@@ -311,11 +311,11 @@ if configuration.get('scheduler.enabled'):
 # after defining tables, uncomment below to enable auditing
 # -------------------------------------------------------------------------
 # auth.enable_record_versioning(db)
-db.define_table('product_category',
+db.define_table('product_type',
     Field('name',                   'string',           label = T('Name')),
         format = '%(name)s')
 
-db.product_category.name.requires  = IS_NOT_EMPTY(error_message=T('Invalid name'))
+db.product_type.name.requires  = IS_NOT_EMPTY(error_message=T('Invalid name'))
 
 
 db.define_table('product',
@@ -323,7 +323,7 @@ db.define_table('product',
     Field('file',               'upload',                           label = T('File'),              autodelete=True),
     Field('description',        'text',                             label = T('Short description')),
     Field('price',              'double',                           label = T('Price')),
-    Field('type',               'reference product_category',       label = T('Type')),
+    Field('type',               'reference product_type',       label = T('Type')),
     Field('owner',              'reference auth_user',              label = T('user'), default=auth.user_id, readable=False, writable=False),
     format = '%(name)s')
 
@@ -331,7 +331,7 @@ db.product.name.requires              = IS_NOT_EMPTY(error_message=T('Invalid na
 db.product.file.requires              = IS_NOT_EMPTY(error_message=T('Invalid file'))
 db.product.description.requires = IS_NOT_EMPTY(error_message=T('Invalid description'))
 db.product.price.requires             = IS_FLOAT_IN_RANGE(0, error_message=T('Invalid price'))
-db.product.type.requires              = IS_IN_DB(db, 'product_category.id', lambda record: T(record.name),
+db.product.type.requires              = IS_IN_DB(db, 'product_type.id', lambda record: T(record.name),
                                                         zero=T('Select one'), error_message=T('Select a type')) 
                                                     
 

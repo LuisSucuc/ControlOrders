@@ -10,20 +10,20 @@
         <div class="m-portlet__head-caption">
             <div class="m-portlet__head-title">
                 <span class="m-portlet__head-icon">
-                    <i class="flaticon-product"></i>
+                    <i class="flaticon-product_type"></i>
                 </span>
                 <h3 class="m-portlet__head-text">
-                    {{=T('Products')}}
+                    {{=T('Tipo de productos')}}
                 </h3>
             </div>
         </div>
         <div class="m-portlet__head-tools">
                 <ul class="m-portlet__nav">
                     <li class="m-portlet__nav-item">
-                        <a href="{{=URL('edit_product')}}" class="btn btn-accent m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air">
+                        <a href="{{=URL('edit_product_type')}}" class="btn btn-accent m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air">
                             <span>
                                 <i class="la la-plus"></i>
-                                <span>{{=T('New')}} {{=T('product')}}</span>
+                                <span>{{=T('New')}} {{=T('tipo')}}</span>
                             </span>
                         </a>
                     </li>
@@ -35,21 +35,13 @@
             <thead>
             <tr>
                 <th>{{=T('Name')}}</th>
-                <th>{{=T('File')}}</th>
-                <th>{{=T('Description')}}</th>
-                <th>{{=T('Price')}}</th>
-                <th>{{=T('Type')}}</th>
                 <th class="text-center">{{=T('Actions')}}</th>
             </tr>
             </thead>
             <tbody>
-                {{for product in products:}}
+                {{for product_type in product_types:}}
                 <tr class="gradeA">
-                    <td>{{=product.name}}</td>
-                    <td>   <img src="{{=URL('default', 'download', args=product.file)}}" width="50px"></td>
-                    <td>{{=product.description}}</td>
-                    <td>{{=product.price}}</td>
-                    <td>{{=product.type.name}}</td>
+                    <td>{{=product_type.name}}</td>
 
                     <td class="text-center">
                         
@@ -69,14 +61,14 @@
                                                     <span class="m-nav__section-text">{{=T('Actions')}}</span>
                                                 </li>
                                                 <li class="m-nav__item">
-                                                    <a href="{{=URL( 'edit_product', vars=dict(product_id=product.id))}}" class="m-nav__link">
+                                                    <a href="{{=URL( 'edit_product_type', vars=dict(product_type_id=product_type.id))}}" class="m-nav__link">
                                                         <i class="m-nav__link-icon la la-edit"></i>
                                                         <span class="m-nav__link-text">{{=T('Edit')}}</span>
                                                     </a>
                                                 </li>
                                                 <li class="m-nav__item">
                                                     <a href="#" class="m-nav__link"
-                                                        onclick="confirmDeletion({{=product.id}})">
+                                                        onclick="confirmDeletion({{=product_type.id}})">
                                                         <i class="m-nav__link-icon la la-trash"></i>
                                                         <span class="m-nav__link-text">{{=T('Delete')}}</span>
                                                     </a>
@@ -106,7 +98,7 @@
 
 
 <script>
-function confirmDeletion(product_id){
+function confirmDeletion(product_type_id){
 
     swal({
         title: "{{=T('Are you sure?')}}",
@@ -120,7 +112,7 @@ function confirmDeletion(product_id){
         reverseButtons: true
     }).then(function(result) {
         if (result.value) {
-            var url = "{{=URL('delete_product')}}" + "?product_id=" + product_id;
+            var url = "{{=URL('delete_product_type')}}" + "?product_type_id=" + product_type_id;
             $(location).attr('href',url);
         }
     });

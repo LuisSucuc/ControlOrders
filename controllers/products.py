@@ -6,6 +6,56 @@ def products():
     products = db(db.product.owner == auth.user_id).select()
     return dict(products = products)
 
+@auth.requires_login()
+def edit_product():
+    product_id = request.vars.product_id
+
+    form = SQLFORM(db.product,
+                   record = product_id,
+                   _class = 'form-horizontal',
+                   showid =False)
+
+    if form.process().accepted:
+        session.flash = T('Saved')
+        redirect(URL('products'))
+    elif form.errors:
+        response.flash = T('Check your data')
+    return dict(form = form,
+    			      product_id = product_id)
+
+@auth.requires_login()
+def delete_product():
+    db(db.product.id == request.vars.product_id).delete()
+    session.flash = T('Deleted')
+    redirect(URL('products'))
+
+@auth.requires_login()
+def product_types():
+    product_types = db(db.product_type).select()
+    return dict(product_types = product_types)
+
+@auth.requires_login()
+def edit_product_type():
+    product_type_id = request.vars.product_type_id
+
+    form = SQLFORM(db.product_type,
+                   record = product_type_id,
+                   _class = 'form-horizontal',
+                   showid =False)
+
+    if form.process().accepted:
+        session.flash = T('Saved')
+        redirect(URL('product_types'))
+    elif form.errors:
+        response.flash = T('Check your data')
+    return dict(form = form,
+    			      product_type_id = product_type_id)
+
+@auth.requires_login()
+def delete_product_type():
+	db(db.product_type.id == request.vars.product_type_id).delete()
+	session.flash = T('Deleted')
+	redirect(URL('product_types'))
 
 @auth.requires_login()
 def report():
@@ -37,25 +87,3 @@ def my_products():
     return dict(products    = products,
                 get_total = get_total)
 
-@auth.requires_login()
-def edit_product():
-    product_id = request.vars.product_id
-
-    form = SQLFORM(db.product,
-                   record = product_id,
-                   _class = 'form-horizontal',
-                   showid =False)
-
-    if form.process().accepted:
-        session.flash = T('Saved')
-        redirect(URL('products'))
-    elif form.errors:
-        response.flash = T('Check your data')
-    return dict(form = form,
-    			      product_id = product_id)
-
-@auth.requires_login()
-def delete_product():
-	#db(db.product.id == request.vars.product_id).delete()
-	session.flash = T('Deleted')
-	redirect(URL('products'))

@@ -4,7 +4,7 @@ response.menu = [
     (T('Comprar'),     'flaticon-cart',         URL('default', 'index' ), []),
     (T('Administración'), 	'flaticon-time',     None, 
         [
-            (T('Clasificaciones'),      False,        URL( 'default', 'index' ),     []),
+            (T('Clasificaciones'),      False,        URL( 'products', 'product_types' ),     []),
             (T('Products'),             False,        URL( 'products', 'products' ), []),
             (T('Reporte'),              False,        URL( 'products', 'report' ), []),
             (T('Comprados'),            False,        URL( 'products', 'my_products' ), []),
