@@ -6,7 +6,6 @@ uploads/*
 sessions/*
 cache/*
 errors/*
-private/*
 .pythonhistory
 progress.log
 
