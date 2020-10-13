@@ -1,16 +1,16 @@
 version: '3'
 services:
-  shock:
+  control:
     build: .
     restart: always
-    image: shock:shock
+    image: control:control
     ports:
-      - 127.0.0.1:8888:8080
+      - 127.0.0.1:9999:8080
     environment:
-      - WEB2PY_PASSWORD=s0ftd3vsh0ck
+      - WEB2PY_PASSWORD=order
       - WEB2PY_ADMIN_SECURITY_BYPASS=true
       - WEB2PY_VERSION=2.20.4
       - TZ=America/Guatemala
-    container_name: shock
+    container_name: control
     volumes:
-      - './:/opt/web2py/applications/shock'
+      - './:/opt/web2py/applications/control'

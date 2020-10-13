@@ -62,7 +62,7 @@ def report():
     sum = db.purchased_product.price.sum()
     products = db(db.product.owner == auth.user_id).select()
     number_products = db(db.product.owner == auth.user_id).count()
-    avg = db.purchased_product.price.avg() or 0
+    avg = db.product.price.avg()
     products_avg = db(db.product.owner == auth.user_id).select(avg).first()[avg] or 0
     global_total_sales = db((db.product.owner == auth.user_id)&
                      (db.purchased_product.product == db.product.id)).select(sum).first()[sum] or 0

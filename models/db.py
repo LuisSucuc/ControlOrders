@@ -20,7 +20,7 @@ if request.global_settings.web2py_version < "2.15.5":
 # be redirected to HTTPS, uncomment the line below:
 # -------------------------------------------------------------------------
 # request.requires_https()
-
+T.force = 'es'
 # -------------------------------------------------------------------------
 # once in production, remove reload=True to gain full speed
 # -------------------------------------------------------------------------
@@ -321,7 +321,7 @@ db.product_type.name.requires  = IS_NOT_EMPTY(error_message=T('Invalid name'))
 db.define_table('product',
     Field('name',               'string',                           label = T('Name')),
     Field('file',               'upload',                           label = T('File'),              autodelete=True),
-    Field('description',        'text',                             label = T('Short description')),
+    Field('description',        'text',                             label = T('Description')),
     Field('price',              'double',                           label = T('Price')),
     Field('type',               'reference product_type',       label = T('Type')),
     Field('owner',              'reference auth_user',              label = T('user'), default=auth.user_id, readable=False, writable=False),
