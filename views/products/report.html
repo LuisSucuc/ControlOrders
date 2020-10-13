@@ -90,59 +90,155 @@
 
 
 
-<div class="m-portlet m-portlet--full-height ">
-    <div class="m-portlet__head">
-        <div class="m-portlet__head-caption">
-            <div class="m-portlet__head-title">
-                <h3 class="m-portlet__head-text">
-                    Productos Vendidos
-                </h3>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="m-portlet m-portlet--mobile m-portlet--body-progress-">
+            <div class="m-portlet__head">
+                <div class="m-portlet__head-caption">
+                    <div class="m-portlet__head-title">
+                        <h3 class="m-portlet__head-text">
+                            Estadísticas
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="m-portlet__body">
+                <canvas id="myChart" width="200" height="200 style="width:500px !importat"></canvas>
             </div>
         </div>
+        
     </div>
-    <div class="m-portlet__body">
+    <div class="col-md-6">
 
-        <!--begin::Content-->
-        <div class="tab-content">
-            <div class="tab-pane active" id="m_widget5_tab1_content" aria-expanded="true">
 
-                <!--begin::m-widget5-->
-                {{for product in products:}}
-                <div class="m-widget5">
-                    <div class="m-widget5__item">
-                        <div class="m-widget5__content">
-                            <div class="m-widget5__pic">
-                                <img class="m-widget7__img" src="{{=URL('default', 'download', args=product.file)}}" alt="">
-                            </div>
-                            <div class="m-widget5__section">
-                                <h4 class="m-widget5__title">
-                                    {{=product.name}} 
-                                </h4>
-                                <span class="m-widget5__desc">
-                                    Q. {{=product.price}}
-                                </span>
-                                <div class="m-widget5__info">
-                                    <span class="m-widget5__author">
-                                        Vendidos:
-                                    </span>
-                                    <span class="m-widget5__info-label">
-                                        {{=get_number_sales(product.id)}}
-                                    </span>
+        <div class="m-portlet m-portlet--full-height ">
+            <div class="m-portlet__head">
+                <div class="m-portlet__head-caption">
+                    <div class="m-portlet__head-title">
+                        <h3 class="m-portlet__head-text">
+                            Productos Vendidos
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="m-portlet__body">
+        
+                <!--begin::Content-->
+                <div class="tab-content">
+                    <div class="tab-pane active" id="m_widget5_tab1_content" aria-expanded="true">
+        
+                        <!--begin::m-widget5-->
+                        {{for product in products:}}
+                        <div class="m-widget5">
+                            <div class="m-widget5__item">
+                                <div class="m-widget5__content">
+                                    <div class="m-widget5__pic">
+                                        <img class="m-widget7__img" src="{{=URL('default', 'download', args=product.file)}}" alt="">
+                                    </div>
+                                    <div class="m-widget5__section">
+                                        <h4 class="m-widget5__title">
+                                            {{=product.name}} 
+                                        </h4>
+                                        <span class="m-widget5__desc">
+                                            Q. {{=product.price}}
+                                        </span>
+                                        <div class="m-widget5__info">
+                                            <span class="m-widget5__author">
+                                                Vendidos:
+                                            </span>
+                                            <span class="m-widget5__info-label">
+                                                {{=get_number_sales(product.id)}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="m-widget5__content">
+                                    <div class="m-widget5__stats1">
+                                        <span class="m-widget5__number">Q.{{=get_total_sales(product.id)}}</span><br>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="m-widget5__content">
-                            <div class="m-widget5__stats1">
-                                <span class="m-widget5__number">Q.{{=get_total_sales(product.id)}}</span><br>
-                            </div>
-                        </div>
+                        {{pass}}
+                        <!--end::m-widget5-->
                     </div>
                 </div>
-                {{pass}}
-                <!--end::m-widget5-->
+        
+                <!--end::Content-->
             </div>
         </div>
-
-        <!--end::Content-->
+        
     </div>
+
 </div>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" integrity="sha512-/zs32ZEJh+/EO2N1b0PEdoA10JkdC3zJ8L5FTiQu82LR9S/rOQNfQN7U59U9BC12swNeRAz3HSzIL2vpp4fv3w==" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg==" crossorigin="anonymous"></script>
+
+<script>
+
+var ctx = document.getElementById('myChart');
+var labels = []
+var data = []
+
+{{for product in products:}}
+    labels.push("{{=product.name}}")
+    data.push({{=get_number_sales(product.id)}})
+{{pass}}
+
+labels.push("{{=product.name}}")
+    data.push(0)
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        
+        labels: labels,
+        
+        datasets: [{
+            label: '# Productos',
+            data: data,
+            backgroundColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>

@@ -71,7 +71,7 @@ def report():
     def get_number_sales(product_id):
         return db(db.purchased_product.product == product_id).count()
     return dict(products = products,
-                products_avg = products_avg,
+                products_avg = round(products_avg,2),
                 get_total_sales = get_total_sales,
                 get_number_sales = get_number_sales,
                 global_total_sales = global_total_sales,
