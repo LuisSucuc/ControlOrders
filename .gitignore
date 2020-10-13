@@ -2,6 +2,7 @@
 *.1
 *.pyc
 databases/*
+uploads/*
 sessions/*
 cache/*
 errors/*
