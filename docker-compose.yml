@@ -14,3 +14,16 @@ services:
     container_name: control
     volumes:
       - './:/opt/web2py/applications/control'
+    depends_on:
+      - postgres_cian
+  postgres_cian:
+    container_name: postgres_cian
+    image: postgres
+    #restart: always
+    ports:
+      - 3000:5432
+    environment:
+      POSTGRES_PASSWORD: c14n
+      POSTGRES_USER: ciancoders
+      POSTGRES_DB: ciandb
+#postgres://ciancoders:c14n@postgres_cian/ciandb

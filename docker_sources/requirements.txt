@@ -1,2 +1,7 @@
 uwsgi==2.0.19.1
 requests==2.24.0
+netaddr==0.7.15
+uwsgi==2.0.19.1
+psycopg2==2.7.7
+psycopg2-binary
+PyMySQL==0.10.1
