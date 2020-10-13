@@ -11,9 +11,13 @@ def products():
 def report():
     products = db(db.product.owner == auth.user_id).select()
     def get_total_sales(product_id):
-        return 100
+        sum = db.purchased_product.price.sum()
+        return db(db.purchased_product.product == product_id).select(sum).first()[sum]
+    def get_number_sales(product_id):
+        return db(db.purchased_product.product == product_id).count()
     return dict(products = products,
-                get_total_sales = get_total_sales)
+                get_total_sales = get_total_sales,
+                get_number_sales = get_number_sales)
 
 
 @auth.requires_login()

@@ -11,7 +11,7 @@
                     <li class="list-group-item"><i>{{=product.description}}</i></li>
                 </ul>
                 <div class="card-body text-center">
-                    <button type="button" v-on:click="buyProduct({{=product.id}})"
+                    <button type="button" v-on:click="buyProduct({{=product.id}},{{=product.price}})"
                             class="btn btn-sm m-btn--pill m-btn--air btn-info m-btn--wide">Comprar</button>
                 </div>
             </div>
@@ -34,9 +34,10 @@
             
         },
         methods: {
-            buyProduct(product_id) {
+            buyProduct(product_id, price) {
                 console.log(product_id)
-                axios.post("{{=URL('buy_product')}}", {product_id: product_id})
+                axios.post("{{=URL('buy_product')}}", { product_id: product_id,
+                                                        price: price})
                 .then(response => {
                     $.notify({
                         icon:       'icon la la-check-circle',

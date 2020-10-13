@@ -18,7 +18,8 @@ def buy():
 @auth.requires_login()
 def buy_product():
     print(request.vars.product_id)
-    return db.purchased_product.validate_and_insert( product = request.vars.product_id)
+    return db.purchased_product.validate_and_insert( product = request.vars.product_id,
+                                                    price = request.vars.price)
 
 
 

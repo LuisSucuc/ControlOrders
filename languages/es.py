@@ -244,6 +244,7 @@
 'Invalid file': 'Invalid file',
 'Invalid login': 'Inicio de sesión inválido',
 'invalid password': 'contraseña inválida',
+'Invalid price': 'Invalid price',
 'Invalid Query': 'Consulta inválida',
 'invalid request': 'Solicitud inválida',
 'Invalid reset password': 'Reinicio de contraseña inválido',

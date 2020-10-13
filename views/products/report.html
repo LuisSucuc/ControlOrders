@@ -5,7 +5,7 @@
         <div class="m-portlet__head-caption">
             <div class="m-portlet__head-title">
                 <h3 class="m-portlet__head-text">
-                    Best Sellers
+                    Productos Vendidos
                 </h3>
             </div>
         </div>
@@ -26,16 +26,24 @@
                             </div>
                             <div class="m-widget5__section">
                                 <h4 class="m-widget5__title">
-                                    {{=product.name}}
+                                    {{=product.name}} 
                                 </h4>
                                 <span class="m-widget5__desc">
                                     Q. {{=product.price}}
                                 </span>
+                                <div class="m-widget5__info">
+                                    <span class="m-widget5__author">
+                                        Vendidos:
+                                    </span>
+                                    <span class="m-widget5__info-label">
+                                        {{=get_number_sales(product.id)}}
+                                    </span>
+                                </div>
                             </div>
                         </div>
                         <div class="m-widget5__content">
                             <div class="m-widget5__stats1">
-                                <span class="m-widget5__number">{{=get_total_sales(product.id)}}</span><br>
+                                <span class="m-widget5__number">Q.{{=get_total_sales(product.id)}}</span><br>
                             </div>
                         </div>
                     </div>

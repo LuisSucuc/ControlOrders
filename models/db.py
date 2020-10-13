@@ -337,7 +337,9 @@ db.product.type.requires              = IS_IN_DB(db, 'product_category.id', lamb
 
 db.define_table('purchased_product',
     Field('product',    'reference product',        label = T('Product')),
+    Field('price',              'double',                           label = T('Price')),
     Field('buyer',      'reference auth_user',      label = T('user'), default=auth.user_id), )
 
+db.purchased_product.price.requires             = IS_FLOAT_IN_RANGE(0, error_message=T('Invalid price'))
 db.purchased_product.product.requires = IS_IN_DB(db, 'product.id', db.product._format,
                                         zero=T('Select one'), error_message=T('Select a product'))
