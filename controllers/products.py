@@ -6,6 +6,16 @@ def products():
     products = db(db.product.owner == auth.user_id).select()
     return dict(products = products)
 
+
+@auth.requires_login()
+def report():
+    products = db(db.product.owner == auth.user_id).select()
+    def get_total_sales(product_id):
+        return 100
+    return dict(products = products,
+                get_total_sales = get_total_sales)
+
+
 @auth.requires_login()
 def edit_product():
     product_id = request.vars.product_id

@@ -376,6 +376,7 @@
 'Remember me': 'Recuérdame',
 'Remember me (for 30 days)': 'Recuérdame (durante 30 días)',
 'remove compiled': 'eliminar compiladas',
+'Report': 'Report',
 'Request Reset Password': 'Solicitar restablecer contraseña',
 'Request reset password': 'Solicitar reinicio de contraseña',
 'Reset password': 'Reiniciar contraseña',

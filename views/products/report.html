@@ -1,0 +1,50 @@
+{{extend 'layout.html'}}
+
+<div class="m-portlet m-portlet--full-height ">
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+                <h3 class="m-portlet__head-text">
+                    Best Sellers
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="m-portlet__body">
+
+        <!--begin::Content-->
+        <div class="tab-content">
+            <div class="tab-pane active" id="m_widget5_tab1_content" aria-expanded="true">
+
+                <!--begin::m-widget5-->
+                {{for product in products:}}
+                <div class="m-widget5">
+                    <div class="m-widget5__item">
+                        <div class="m-widget5__content">
+                            <div class="m-widget5__pic">
+                                <img class="m-widget7__img" src="{{=URL('default', 'download', args=product.file)}}" alt="">
+                            </div>
+                            <div class="m-widget5__section">
+                                <h4 class="m-widget5__title">
+                                    {{=product.name}}
+                                </h4>
+                                <span class="m-widget5__desc">
+                                    Q. {{=product.price}}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="m-widget5__content">
+                            <div class="m-widget5__stats1">
+                                <span class="m-widget5__number">{{=get_total_sales(product.id)}}</span><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{pass}}
+                <!--end::m-widget5-->
+            </div>
+        </div>
+
+        <!--end::Content-->
+    </div>
+</div>

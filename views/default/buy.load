@@ -1,0 +1,61 @@
+<div class="row" id="app">
+    {{for product in products:}}
+        <div class="col-md-4">
+            <div class="card" style="width:100%;">
+                <img class="card-img-top" src="{{=URL('default', 'download', args=product.file)}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Q. {{=product.price}} <span class="m-badge  m-badge--primary m-badge--wide">{{=product.type.name}}</span></h5>
+                    <p class="card-text">{{=product.name}}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><i>{{=product.description}}</i></li>
+                </ul>
+                <div class="card-body text-center">
+                    <button type="button" v-on:click="buyProduct({{=product.id}})"
+                            class="btn btn-sm m-btn--pill m-btn--air btn-info m-btn--wide">Comprar</button>
+                </div>
+            </div>
+        </div>
+    {{pass}}
+</div>
+
+
+<script src="{{=URL('static','js/vue.min.js')}}"></script>
+<script src="{{=URL('static','js/axios.min.js')}}"></script>
+
+
+<script>
+     var app = new Vue({
+        el: '#app',
+        delimiters: ['${', '}'],
+        data: {
+        },
+        async mounted() {
+            
+        },
+        methods: {
+            buyProduct(product_id) {
+                console.log(product_id)
+                axios.post("{{=URL('buy_product')}}", {product_id: product_id})
+                .then(response => {
+                    $.notify({
+                        icon:       'icon la la-check-circle',
+                        message:    'Compra exitosa' 
+                    },{
+                        timer:      2500,
+                        type:       'success',
+                        spacing:    '10',
+                        placement:  {from:'top', align:'right'},
+                        offset:     {x:'30',y:'30'},
+                        delay:      '1000',
+                        z_index:    '10000',
+                        animate:    {enter:'animated flipInX', exit:'animated flipOutX'},
+                        mouse_over: 'pause',       
+                });
+                }).catch(function (error) {
+
+                });
+            },
+        }
+    })
+</script>

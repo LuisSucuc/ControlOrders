@@ -336,10 +336,8 @@ db.product.type.requires              = IS_IN_DB(db, 'product_category.id', lamb
                                                     
 
 db.define_table('purchased_product',
-    Field('product',         'reference product',         label = T('Product')),
-    Field('buyer',         'reference auth_user',      label = T('user')),)
+    Field('product',    'reference product',        label = T('Product')),
+    Field('buyer',      'reference auth_user',      label = T('user'), default=auth.user_id), )
 
 db.purchased_product.product.requires = IS_IN_DB(db, 'product.id', db.product._format,
                                         zero=T('Select one'), error_message=T('Select a product'))
-db.purchased_product.buyer.requires = IS_EMPTY_OR(IS_IN_DB(db, 'auth_user.id', db.auth_user._format,
-                                        zero=T('Select one'), error_message=T('Select a user')))

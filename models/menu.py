@@ -4,8 +4,9 @@ response.menu = [
     (T('Comprar'),     'flaticon-map',         URL('default', 'index' ), []),
     (T('Menu'), 	'flaticon-time',     None, 
         [
-            (T('Clasificaciones'),       False,        URL( 'default', 'index' ), []),
-            (T('Products'),       False,        URL( 'products', 'products' ), []),
+            (T('Clasificaciones'),      False,        URL( 'default', 'index' ),     []),
+            (T('Products'),             False,        URL( 'products', 'products' ), []),
+            (T('Report'),               False,        URL( 'products', 'report' ), []),
         ]
     ),
 ]
