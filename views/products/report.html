@@ -1,4 +1,94 @@
 {{extend 'layout.html'}}
+<h1 class="text-center">Reporte</h1>
+<div class="row">
+    <div class="col-md-4">
+        <div class="m-portlet m-portlet--head-overlay m-portlet--full-height  m-portlet--rounded-force">
+            <div class="m-portlet__head m-portlet__head--fit-">
+                <div class="m-portlet__head-caption">
+                    <div class="m-portlet__head-title">
+                        <h3 class="m-portlet__head-text m--font-light text-center">
+                            Ventas totales
+                        </h3>
+                    </div>
+                </div>
+                <div class="m-portlet__head-tools">
+                    <ul class="m-portlet__nav">
+                    </ul>
+                </div>
+            </div>
+            <div class="m-portlet__body">
+                <div class="m-widget27 m-portlet-fit--sides">
+                    <div class="m-widget27__pic">
+                        <img src="{{=URL('static', 'images/bg-4.jpg')}}" alt="">
+                        <h3 class="m-widget27__title m--font-light">
+                            <span><span>Q. </span>{{=global_total_sales}}</span>
+                        </h3>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="m-portlet m-portlet--head-overlay m-portlet--full-height  m-portlet--rounded-force">
+            <div class="m-portlet__head m-portlet__head--fit-">
+                <div class="m-portlet__head-caption">
+                    <div class="m-portlet__head-title">
+                        <h3 class="m-portlet__head-text m--font-light text-center">
+                            Precio promedio
+                        </h3>
+                    </div>
+                </div>
+                <div class="m-portlet__head-tools">
+                    <ul class="m-portlet__nav">
+                    </ul>
+                </div>
+            </div>
+            <div class="m-portlet__body">
+                <div class="m-widget27 m-portlet-fit--sides">
+                    <div class="m-widget27__pic">
+                        <img src="{{=URL('static', 'images/bg-4.jpg')}}" alt="">
+                        <h3 class="m-widget27__title m--font-light">
+                            <span><span>Q. </span>{{=products_avg}}</span>
+                        </h3>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="m-portlet m-portlet--head-overlay m-portlet--full-height  m-portlet--rounded-force">
+            <div class="m-portlet__head m-portlet__head--fit-">
+                <div class="m-portlet__head-caption">
+                    <div class="m-portlet__head-title">
+                        <h3 class="m-portlet__head-text m--font-light text-center">
+                            Productos disponibles
+                        </h3>
+                    </div>
+                </div>
+                <div class="m-portlet__head-tools">
+                    <ul class="m-portlet__nav">
+                    </ul>
+                </div>
+            </div>
+            <div class="m-portlet__body">
+                <div class="m-widget27 m-portlet-fit--sides">
+                    <div class="m-widget27__pic">
+                        <img src="{{=URL('static', 'images/bg-4.jpg')}}" alt="">
+                        <h3 class="m-widget27__title m--font-light">
+                            <span><span></span>{{=number_products}}</span>
+                        </h3>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 <div class="m-portlet m-portlet--full-height ">
     <div class="m-portlet__head">

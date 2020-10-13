@@ -1,0 +1,20 @@
+{{extend 'layout.html'}}
+
+<h1 class="text-center">Productos adquiridos</h1>
+
+<div class="row" id="app">
+    {{for product in products:}}
+        <div class="col-md-4">
+            <div class="card" style="width:100%;">
+                <img class="card-img-top" src="{{=URL('default', 'download', args=product.file)}}" alt="Card image cap">
+                <div class="card-body">
+                    <p class="card-text">{{=product.name}} <span class="m-badge  m-badge--primary m-badge--wide">{{=get_total(product.id)}}</span></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><i>{{=product.description}}</i></li>
+                </ul>
+            </div>
+        </div>
+    {{pass}}
+</div>
+

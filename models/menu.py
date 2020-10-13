@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 
 response.menu = [
-    (T('Comprar'),     'flaticon-map',         URL('default', 'index' ), []),
-    (T('Menu'), 	'flaticon-time',     None, 
+    (T('Comprar'),     'flaticon-cart',         URL('default', 'index' ), []),
+    (T('Administración'), 	'flaticon-time',     None, 
         [
             (T('Clasificaciones'),      False,        URL( 'default', 'index' ),     []),
             (T('Products'),             False,        URL( 'products', 'products' ), []),
-            (T('Report'),               False,        URL( 'products', 'report' ), []),
+            (T('Reporte'),              False,        URL( 'products', 'report' ), []),
+            (T('Comprados'),            False,        URL( 'products', 'my_products' ), []),
         ]
     ),
 ]
